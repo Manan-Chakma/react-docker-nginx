@@ -1,0 +1,12 @@
+# super user permission
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t manan/docker-react -f Dockerfile.dev .
+
+# contain list of commands need to executed to run the test suite
+script:
+  - docker run -e CI=true manan/docker-react npm run test

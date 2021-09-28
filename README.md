@@ -1,28 +1,28 @@
-# Getting Started with Docker Nginx and React App
+# Getting Started with Travis CI Docker Nginx and React App
 
-## Dockerfile
-
-```Dockerfile
-FROM node:alpine as builder
-WORKDIR /app
-COPY package.json .
-RUN npm install
-COPY . .
-
-RUN npm run build
-
-FROM nginx
-COPY --from=builder /app/build /usr/share/nginx/html 
+## .travis.yml
 ```
+# super user permission
+sudo: required
 
-### `docker build .`
+services:
+  - docker
 
-Build the image
+before_install:
+  - docker build -t manan/docker-react -f Dockerfile.dev .
 
-### `docker run -p 8080:80 <image-id>`
+# contain list of commands need to executed to run the test suite
+script:
+  - docker run -e CI=true manan/docker-react npm run test
+```
+### `Steps`
 
-Open [http://localhost:8080](http://localhost:3000) to view it in the browser.
+1. Sync Project Directory in Travis CI
+2. Create and Edit the .travis.yml file
+3. Push Code in Github
 
-### Branches
+### `Result`
 
-* [docker-volume](https://github.com/Manan-Chakma/react-docker-nginx/tree/docker-volume-example)
+After Completiion:
+
+![Image of Travis CI Dashboard](https://github.com/Manan-Chakma/react-docker-nginx/tree/master/public/travisci.png)
