@@ -25,4 +25,4 @@ script:
 
 After Completiion:
 
-![Image of Travis CI Dashboard](https://github.com/Manan-Chakma/react-docker-nginx/tree/master/public/travisci.png)
+![Image of Travis CI Dashboard](https://github.com/Manan-Chakma/react-docker-nginx/blob/master/public/travisci.png)
